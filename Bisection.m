@@ -25,45 +25,57 @@
 % end
 % disp(var);
 
+% clc
+% a=input('Enter a: ');
+% b=input('Enter b: ');
+% tol=input('Enter the tolerance: ');
+% f= @(x) x^2-16;
+% c=(a+b)/2;
+% err=abs(f(c));
+% it=0;
+% var=[];
+% itrmax=ceil(log2((b-a)/tol));
+% if f(a)*f(b)>0
+%     fprintf('Wrong vals of a and b. \n');
+% else 
+%     while(it<=itrmax && err>=tol)
+%         if f(a)*f(c)<0
+%             b=c;
+%         else 
+%             a=c;
+%         end
+%         c=(a+b)/2;
+%         err=abs(f(c));
+%         it=it+1;
+%         var=[var;it a b c f(c) err];
+%     end
+% end
+% disp(var);
 
 
-
-
-
-
-
-
-
-
-
-% My PRAC
 clc
-a=input('Enter a: ');
-b=input('Enter b: ');
-tol=input('Enter the tolerance: ');
-f= @(x) x^2-16;
-c=(a+b)/2;
-err=abs(f(c));
+a=input('Enter Lower Limit: ');
+b=input('Enter upper limit: ');
+tol=input('Enter tolerance: ');
+f=@(x) x^2-4;
 it=0;
+c=(a+b)/2;
 var=[];
-itrmax=ceil(log2((b-a)/tol));
+err=abs(f(c));
+n=log2((b-a)/tol);
 if f(a)*f(b)>0
-    fprintf('Wrong vals of a and b. \n');
+    fprintf('WRONG');
 else 
-    while(it<=itrmax && err>=tol)
+    while it<=n &&  err<=tol
         if f(a)*f(c)<0
             b=c;
         else 
             a=c;
         end
-        c=(a+b)/2;
         err=abs(f(c));
         it=it+1;
-        var=[var;it a b c f(c) err];
+         var=[var;it a b c f(c) err];
     end
 end
 disp(var);
-
-
-
 

@@ -1,0 +1,11 @@
+clc
+Info=[6 3 2; 6 4 3; 20 15 12];
+b=[6;0;0];
+A=[Info b];
+for i=1:size(A,1)
+    for j=i+1:size(A,1)
+        key=A(j,i)./A(i,i);
+        A(j,:)=A(j,:)-key.*A(i,:);
+    end
+    x=zeros()
+end
