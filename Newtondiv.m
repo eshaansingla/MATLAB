@@ -1,8 +1,8 @@
 clc
 format short
-x=[0 1 2 4 5 6];
-y=[1 14 5 5 6 19];
-X=3;
+x=[4 5 7 10 11 13];
+y=[48 100 294 900 1210 2028];
+X=8;
 n=size(x,2);
 DD=zeros(n,n);
 for i=1:n
@@ -21,7 +21,7 @@ for i=1:n
 end
 sum=0;
 for i=1:n
-    sum=sum+DD(i,i)*prod(i);
+    sum=sum+(DD(i,i)*prod(i));
 end
 disp(DD);
 disp(sum);

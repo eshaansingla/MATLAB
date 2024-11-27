@@ -27,13 +27,13 @@
 % clc
 % format long
 % 
-% f=@(x) 2*sin(x);
+% f=@(x) x-2*sin(x);
 % df=@(x) 1-2*cos(x);
 % x0=input('Initial guess: ');
 % n=input('Enter n:');
 % tol=input('Enter tolerance: ');
 % for i=1:n
-%     x1=f(x0);
+%     x1=x0-f(x0)/df(x0);
 %     if abs(x1-x0)<tol
 %         fprintf('%f\n',x1);
 %         break;
@@ -71,7 +71,7 @@ X=127;
 for i=1:size(x,2)
     x1=x;
     x1(i)=[];
-    l(i)=prod(X-x1)./prod(x(i)-x1);
+    l(i)=prod(X-x1)/prod(x(i)-x1);
 end
 answ=0;
 for i=1:size(x,2)
