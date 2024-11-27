@@ -175,3 +175,86 @@
 % B=[sum2;sum3];
 % C=inv(A)*B;
 % C
+
+%GAUSS SEIDEL
+% A=[4 2 1;1 3 1; 3 2 6];
+% b=[4;4;7];
+% tol=input('Enter tolerance: ');
+% x=[0.1 0.8 0.5];
+% maxiter=input('Enter maximum number of iterations: ');
+% n=length(b);
+% for k=1:maxiter
+%     xn=x;
+%     for i=1:n
+%         sum1=0;
+%         sum2=0;
+%         for j=1:i-1
+%             sum1=sum1+A(i,j)*x(j);
+%         end
+%         for j=i+1:n
+%             sum2=sum2+A(i,j)*xn(j);
+%         end
+%         x(i)=(b(i)-sum1-sum2)/A(i,i);
+%     end
+%     if norm(xn-x,inf)<tol
+%         x
+%         k
+%         break;
+%     end
+% end
+    % A = [2 4 -6;1 5 3;1 3 2];
+    % B = [-4;10;5];
+    % n = length(B);
+    % AB = [A B];
+    % for i = 1:n-1
+    %     for j = i+1:n
+    %         factor = AB(j, i) / AB(i, i);
+    %         AB(j, i:end) = AB(j, i:end) - factor * AB(i, i:end);
+    %     end
+    % end
+    % X = zeros(n, 1);
+    % for i = n:-1:1
+    %     X(i) = (AB(i, end) - AB(i, i+1:n) * X(i+1:n)) / AB(i, i);
+    % end
+    % disp('Solution:');
+    % disp(X);
+A = [2 4 -6;1 5 3;1 3 2];
+B = [-4;10;5];
+n = length(B);
+AB=[A B];
+for i=1:n
+    for j=i+1:n
+        key=AB(j,i)/AB(i,i);
+        AB(j,i:end)=AB(j,i:end)-key*AB(i,i:end);
+    end
+end
+X=zeros(n,1);
+for i=n:-1:1
+    X(i)=(AB(i,end)-AB(i,i+1:n)*X(i+1:n))/AB(i,i);
+end
+disp(X);
+
+
+clc
+A=[1 1 0 0;1 2 0 1;0 0 3 3;0 1 2 3];
+x0=[1;1;0;1];
+k0=0;
+tol=0.0001;
+N=10000;
+t=0;
+while t<=N
+    y=A*x0;
+    k=max(abs(y));
+    x0=y/k;
+    if(abs(k0-k)<tol)
+        break;
+    end
+    k0=k;
+    t=t+1;
+end
+t
+k
+x0
+
+
+
